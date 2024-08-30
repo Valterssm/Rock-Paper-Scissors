@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+         
+
+
+            function getComputerChoice() {
+                const randomNumber = Math.random();
+
+                if (randomNumber < 1/3) {
+                    return "rock";
+                } else if (randomNumber < 2/3) {
+                    return "paper";  
+                } else {
+                    return "scissors";
+                }
+            }
+
+            console.log(getComputerChoice());
+
+
+            function getHumanChoise() {
+                const humanChoise = prompt("rock/paper/scissor").toLowerCase();
+
+                if (humanChoise == "rock") {
+                    return "rock";
+                } else if (humanChoise == "paper") {
+                    return "paper";
+                } else {
+                    return "scissors";
+                }
+            }
+
+            console.log(getHumanChoise());
+            
+            function playRound(humanChoice, getComputerChoice) {
+                if (humanChoice === computerChoice) {
+                    console.log("Tie, since " + computerChoice + " and " + humanChoice + " are the same!");
+                } else if ((humanChoice === "rock" && computerChoice === "paper")
+                || (humanChoice === "paper" && computerChoice === "scissors")
+                || (humanChoice === "scissors" && computerChoice === "rock")) {
+                    console.log("You lost, because " + computerChoice + " beats " + humanChoice + ".");
+                    computerScore++;
+                } else {
+                    console.log("You win, because " + humanChoice + " beats " + computerChoice + "!");
+                    humanScore++;
+                }
+                return;
+                
+            }
+
+            function playGame() {
+            console.log("You will play 5 rounds.");
+            let roundCount = 0
+            let humanScore = 0
+            let computerScore = 0
+
+            while (roundCount < 5) {
+                console.log("Round " + (roundCount + 1));
+                let humanSelection = getHumanChoice();
+                let computerSelection = getComputerChoice();
+                playRound(humanSelection, computerSelection);
+                console.log("Current score: You: " + humanScore + " CPU: " + computerScore);
+                roundCount++;
+            }
+            }
+            
+    </script>
+    
+</body>
+</html>
